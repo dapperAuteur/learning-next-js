@@ -27,17 +27,33 @@ function HomePage(props) {
     return <MeetupList meetups={props.meetups}/>
         }
 
-export async function getStaticProps() {
+// runs on the server on deployment/every incoming request
+// not as fast as getStaticProps
+export async function getServerSideProps(context){
+    console.log(`context`, context)
+    const req = context.req;
+    const res = context.res;
     // fetch data from API
     return {
         props: {
             meetups: DUMMY_MEETUPS
-        },
-        // incremental static generation
-        // revalidate: 10 says to generate this page ever 10 seconds on the server 
-        revalidate: 10
-    }
-
+        }
+    };
 }
+// runs during build process
+// faster
+// can be cached and distributed by CDN
+// export async function getStaticProps() {
+//     // fetch data from API
+//     return {
+//         props: {
+//             meetups: DUMMY_MEETUPS
+//         },
+//         // incremental static generation
+//         // revalidate: 10 says to generate this page ever 10 seconds on the server 
+//         revalidate: 10
+//     }
+
+// }
 
 export default HomePage
