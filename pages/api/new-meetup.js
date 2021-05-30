@@ -4,9 +4,8 @@ async function handler(req, res) {
     if (req.method === 'POST') {
         const data = req.body;
         const {title, image, address, description} = data;
-        console.log(`data`, data)
+        // console.log(`data`, data)
 
-        console.log(`process.env.ATLAS_URI`, process.env.ATLAS_URI)
         const client = await MongoClient.connect(process.env.ATLAS_URI)
         const db = client.db()
 
@@ -14,7 +13,7 @@ async function handler(req, res) {
 
        const result = await meetupsCollections.insertOne(data)
 
-       console.log(`result`, result)
+    //    console.log(`result`, result)
        client.close()
 
        res.status(201).json({message: 'Meetup inserted'})
