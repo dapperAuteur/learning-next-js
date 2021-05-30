@@ -32,7 +32,10 @@ export async function getStaticProps() {
     return {
         props: {
             meetups: DUMMY_MEETUPS
-        }
+        },
+        // incremental static generation
+        // revalidate: 10 says to generate this page ever 10 seconds on the server 
+        revalidate: 10
     }
 
 }
