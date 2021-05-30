@@ -25,6 +25,6 @@ const DUMMY_MEETUPS = [
 ]
 function HomePage(props) {
     return <MeetupList meetups={DUMMY_MEETUPS}/>
-}
+        }
 
 export default HomePage
