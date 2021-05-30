@@ -30,7 +30,7 @@ function HomePage(props) {
 // runs on the server on deployment/every incoming request
 // not as fast as getStaticProps
 export async function getServerSideProps(context){
-    console.log(`context`, context)
+    // console.log(`context`, context)
     const req = context.req;
     const res = context.res;
     // fetch data from API
