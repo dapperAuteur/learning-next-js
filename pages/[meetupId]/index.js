@@ -4,6 +4,22 @@ function MeetupDetails(props) {
     return <MeetupDetail image={props.image} title={props.title} address={props.address} description={props.description} />
 }
 
+export async function getStaticPaths(){
+    return {
+        paths: [
+            {
+                params: {
+                    meetupId: 'm1'
+                }
+            },
+            {
+                params: {
+                    meetupId: 'm2'
+                }
+            }
+        ]
+    }
+}
 
 export async function getStaticProps(context) {
     // fetch data for single meetup
