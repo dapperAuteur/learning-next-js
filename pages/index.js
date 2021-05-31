@@ -23,7 +23,7 @@ function HomePage(props) {
 // can be cached and distributed by CDN
 export async function getStaticProps() {
     // fetch data from API
-    
+    // executes code when page is pregenerated
     const client = await MongoClient.connect(process.env.ATLAS_URI)
     const db = client.db()
 
