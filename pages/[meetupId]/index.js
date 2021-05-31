@@ -37,7 +37,7 @@ export async function getStaticPaths(){
 export async function getStaticProps(context) {
     // fetch data for single meetup
     const meetupId = context.params.meetupId;
-    console.log(`meetupId`, meetupId)
+    // console.log(`meetupId`, meetupId)
 
     const client = await MongoClient.connect(process.env.ATLAS_URI)
     const db = client.db()
@@ -47,7 +47,7 @@ export async function getStaticProps(context) {
     const selectedMeetup = await meetupsCollections.findOne({ _id: ObjectId(meetupId) });
     client.close()
 
-    console.log(`selectedMeetup`, selectedMeetup)
+    // console.log(`selectedMeetup`, selectedMeetup)
     
     return {
         props: {
