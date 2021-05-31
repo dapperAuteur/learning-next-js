@@ -27,7 +27,11 @@ export async function getStaticPaths(){
     const meetups = await meetupsCollections.find({}, {_id: 1}).toArray();
     client.close()
     return {
-        fallback: false,
+        // setting fallback to `'blocking'` or `true` lets the app know that the list isn't exhaustive
+        // therefore pages will be pregenerated when needed
+        // true immediately returns an empty page, then pull down the dynamic content once it's done
+        // wit blocking the user will not see anything until the pages is pregenerated, then the finished page will be served
+        fallback: 'blocking',
         paths: meetups.map((meetup) => ({
             params: { meetupId: meetup._id.toString() }
         }))
